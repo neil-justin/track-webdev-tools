@@ -1,15 +1,8 @@
 import { useState } from "react";
 import ModifiableTechToolsList from "./ModifiableTechToolsList";
 
-const INITIAL_TECH_TOOLS = [
-  { name: "html", keywordAppearances: 5 },
-  { name: "css", keywordAppearances: 5 },
-  { name: "javascript", keywordAppearances: 7 },
-  { name: "react", keywordAppearances: 3 },
-];
-
 export default function App() {
-  const [techTools, setTechTools] = useState(INITIAL_TECH_TOOLS);
+  const [techTools, setTechTools] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedItemValue, setSelectedItemValue] = useState("");
   const [newItemValue, setNewItemValue] = useState("");

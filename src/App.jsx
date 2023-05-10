@@ -13,6 +13,15 @@ export default function App() {
     localStorage.setItem("techTools", JSON.stringify(techTools));
   }, [techTools]);
 
+  let keywordsCount = 0;
+
+  if (techTools.length > 0) {
+    keywordsCount = techTools.reduce(
+      (accumulator, techTool) => accumulator + techTool.keywordAppearances,
+      0
+    );
+  }
+
   function handleNewItemValueChange(e) {
     setNewItemValue(e.target.value);
   }
@@ -120,6 +129,7 @@ export default function App() {
         onNewItemValueChange={handleNewItemValueChange}
         newItemValue={newItemValue}
         onAddItemClick={handleAddItemClick}
+        keywordsCount={keywordsCount}
       />
     </>
   );

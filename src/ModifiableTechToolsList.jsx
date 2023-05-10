@@ -12,6 +12,7 @@ export default function ModifiableTechToolsList({
   onNewItemValueChange,
   newItemValue,
   onAddItemClick,
+  keywordsCount,
 }) {
   return (
     <>
@@ -67,6 +68,7 @@ export default function ModifiableTechToolsList({
           Add
         </button>
       </form>
+      <p>keywords count: {keywordsCount}</p>
     </>
   );
 }

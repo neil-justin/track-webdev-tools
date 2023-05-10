@@ -9,6 +9,9 @@ export default function ModifiableTechToolsList({
   onDeleteItemClick,
   onIncrementItemClick,
   onDecrementItemClick,
+  onNewItemValueChange,
+  newItemValue,
+  onAddItemClick,
 }) {
   return (
     <>
@@ -50,6 +53,20 @@ export default function ModifiableTechToolsList({
           );
         })}
       </ul>
+      <form onSubmit={onAddItemClick}>
+        <label htmlFor="newItemInput">
+          <input
+            type="text"
+            id="newItemInput"
+            minLength="2"
+            onChange={onNewItemValueChange}
+            value={newItemValue}
+          />
+        </label>
+        <button type="submit" disabled={newItemValue.length < 3}>
+          Add
+        </button>
+      </form>
     </>
   );
 }

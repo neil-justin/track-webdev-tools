@@ -12,6 +12,31 @@ export default function App() {
   const [techTools, setTechTools] = useState(INITIAL_TECH_TOOLS);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedItemValue, setSelectedItemValue] = useState("");
+  const [newItemValue, setNewItemValue] = useState("");
+
+  function handleNewItemValueChange(e) {
+    setNewItemValue(e.target.value);
+  }
+
+  function handleAddItemClick(event) {
+    event.preventDefault();
+
+    const existingIndex = techTools.findIndex((techTool) => {
+      return techTool.name === newItemValue.toLowerCase();
+    });
+
+    if (existingIndex < 0) {
+      setTechTools([
+        ...techTools,
+        { name: newItemValue.toLowerCase(), keywordAppearances: 1 },
+      ]);
+    } else {
+      handleIncrementItemClick(existingIndex);
+      window.alert("This tool or concept already exists on your list");
+    }
+
+    setNewItemValue("");
+  }
 
   function handleSelectedItemValueChange(e, index) {
     const nextSelectedItemValue =
@@ -93,6 +118,9 @@ export default function App() {
         onDeleteItemClick={handleDeleteItemClick}
         onIncrementItemClick={handleIncrementItemClick}
         onDecrementItemClick={handleDecrementItemClick}
+        onNewItemValueChange={handleNewItemValueChange}
+        newItemValue={newItemValue}
+        onAddItemClick={handleAddItemClick}
       />
     </>
   );

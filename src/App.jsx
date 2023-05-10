@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModifiableTechToolsList from "./ModifiableTechToolsList";
 
+const initialTechTools = JSON.parse(localStorage.getItem("techTools")) ?? [];
+
 export default function App() {
-  const [techTools, setTechTools] = useState([]);
+  const [techTools, setTechTools] = useState(initialTechTools);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedItemValue, setSelectedItemValue] = useState("");
   const [newItemValue, setNewItemValue] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("techTools", JSON.stringify(techTools));
+  }, [techTools]);
 
   function handleNewItemValueChange(e) {
     setNewItemValue(e.target.value);

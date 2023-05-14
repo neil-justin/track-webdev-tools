@@ -8,6 +8,7 @@ export default function App() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedItemValue, setSelectedItemValue] = useState("");
   const [newItemValue, setNewItemValue] = useState("");
+  const [visitedJobAdsCount, setVisitedJobAdsCount] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("techTools", JSON.stringify(techTools));
@@ -20,6 +21,18 @@ export default function App() {
       (accumulator, techTool) => accumulator + techTool.keywordAppearances,
       0
     );
+  }
+
+  function handleModifyVisitedJobAdsCount(increment) {
+    if (increment) {
+      setVisitedJobAdsCount(
+        (prevVisitedJobAdsCount) => prevVisitedJobAdsCount + 1
+      );
+    } else {
+      setVisitedJobAdsCount(
+        (prevVisitedJobAdsCount) => prevVisitedJobAdsCount - 1
+      );
+    }
   }
 
   function handleNewItemValueChange(e) {
@@ -115,6 +128,7 @@ export default function App() {
 
   function handleClearListClick() {
     setTechTools([]);
+    setVisitedJobAdsCount(0);
   }
 
   return (
@@ -135,6 +149,8 @@ export default function App() {
         onAddItemClick={handleAddItemClick}
         keywordsCount={keywordsCount}
         onClearListClick={handleClearListClick}
+        visitedJobAdsCount={visitedJobAdsCount}
+        onModifyVisitedJobAdsCount={handleModifyVisitedJobAdsCount}
       />
     </>
   );

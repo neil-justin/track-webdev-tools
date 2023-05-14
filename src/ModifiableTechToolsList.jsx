@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function ModifiableTechToolsList({
   techTools,
   selectedIndex,
@@ -15,6 +17,20 @@ export default function ModifiableTechToolsList({
   keywordsCount,
   onClearListClick,
 }) {
+  const [visitedJobAdsCount, setVisitedJobAdsCount] = useState(0);
+
+  function handleVisitedJobAdsCount(increment) {
+    if (increment) {
+      setVisitedJobAdsCount(
+        (prevVisitedJobAdsCount) => prevVisitedJobAdsCount + 1
+      );
+    } else {
+      setVisitedJobAdsCount(
+        (prevVisitedJobAdsCount) => prevVisitedJobAdsCount - 1
+      );
+    }
+  }
+
   return (
     <>
       <h1>Essential junior-level developer tools</h1>
@@ -73,6 +89,16 @@ export default function ModifiableTechToolsList({
         </button>
       </form>
       <p>keywords count: {keywordsCount}</p>
+      <p>
+        <span>visited job ads: {visitedJobAdsCount} </span>{" "}
+        <button onClick={() => handleVisitedJobAdsCount(true)}>+1</button>{" "}
+        <button
+          disabled={visitedJobAdsCount < 1}
+          onClick={() => handleVisitedJobAdsCount(false)}
+        >
+          -1
+        </button>
+      </p>
     </>
   );
 }

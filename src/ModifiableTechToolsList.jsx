@@ -50,23 +50,23 @@ export default function ModifiableTechToolsList({
                     minLength="2"
                     value={selectedItemValue}
                     onChange={(e) => onSelectedItemValueChange(e)}
-                  />
+                  />{" "}
                   <button type="submit" disabled={selectedItemValue.length < 3}>
                     Save
-                  </button>
-                  <button onClick={onCancelItemEditClick}>Cancel</button>
+                  </button>{" "}
+                  <button onClick={onCancelItemEditClick}>Cancel</button>{" "}
                 </form>
               ) : (
                 <>
                   <span>
                     {techTool.name} {" - "} {techTool.keywordAppearances}{" "}
                   </span>
-                  <button onClick={() => onEditItemClick(index)}>Edit</button>
+                  <button onClick={() => onEditItemClick(index)}>Edit</button>{" "}
                 </>
               )}
-              <button onClick={() => onDeleteItemClick(index)}>Delete</button>
-              <button onClick={() => onIncrementItemClick(index)}>+1</button>
-              <button onClick={() => onDecrementItemClick(index)}>-1</button>
+              <button onClick={() => onDeleteItemClick(index)}>Delete</button>{" "}
+              <button onClick={() => onIncrementItemClick(index)}>+1</button>{" "}
+              <button onClick={() => onDecrementItemClick(index)}>-1</button>{" "}
             </li>
           );
         })}
@@ -83,7 +83,7 @@ export default function ModifiableTechToolsList({
             onChange={onNewItemValueChange}
             value={newItemValue}
           />
-        </label>
+        </label>{" "}
         <button type="submit" disabled={newItemValue.length < 3}>
           Add
         </button>

@@ -16,7 +16,7 @@ export default function ModifiableTechToolsList({
 }) {
   return (
     <>
-      <h1>Essential technology tools and concepts for entry-level developer</h1>
+      <h1>Essential junior-level developer tools</h1>
       <ul>
         {techTools.map((techTool, index) => {
           return (

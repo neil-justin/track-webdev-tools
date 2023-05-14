@@ -13,6 +13,7 @@ export default function ModifiableTechToolsList({
   newItemValue,
   onAddItemClick,
   keywordsCount,
+  onClearListClick,
 }) {
   return (
     <>
@@ -54,6 +55,9 @@ export default function ModifiableTechToolsList({
           );
         })}
       </ul>
+      {techTools.length >= 1 && (
+        <button onClick={onClearListClick}>Clear list</button>
+      )}
       <form onSubmit={onAddItemClick}>
         <label htmlFor="newItemInput">
           <input

@@ -113,6 +113,10 @@ export default function App() {
     setTechTools(nextTechTools);
   }
 
+  function handleClearListClick() {
+    setTechTools([]);
+  }
+
   return (
     <>
       <ModifiableTechToolsList
@@ -130,6 +134,7 @@ export default function App() {
         newItemValue={newItemValue}
         onAddItemClick={handleAddItemClick}
         keywordsCount={keywordsCount}
+        onClearListClick={handleClearListClick}
       />
     </>
   );
